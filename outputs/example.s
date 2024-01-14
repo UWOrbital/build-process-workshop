@@ -1,5 +1,15 @@
 	.file	"example.c"
 	.text
+	.section	.rodata
+.LC0:
+	.string	"Hello World!"
+	.section	.data.rel.local,"aw"
+	.align 8
+	.type	exampleStr, @object
+	.size	exampleStr, 8
+exampleStr:
+	.quad	.LC0
+	.text
 	.globl	exampleFunc
 	.type	exampleFunc, @function
 exampleFunc:
@@ -11,7 +21,7 @@ exampleFunc:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	movl	$16, %eax
+	movl	$3, %eax
 	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret

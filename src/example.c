@@ -1,5 +1,7 @@
 #include "example.h"
 
+static const char *exampleStr = EXAMPLE_STRING;
+
 int exampleFunc(void) {
-    return SUM(VALUE1, VALUE2);
+    return SUM(1, 2);
 }
